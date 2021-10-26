@@ -1,4 +1,6 @@
 ﻿using System;
+using Choices;
+using Continuing;
 
 namespace HomeWork1
 {
@@ -10,15 +12,8 @@ namespace HomeWork1
             Choice userChoice = new();
             userChoice.Choosing();
 
-
-            Console.WriteLine("Let's do something more?\n Please, enter \"yes\" or \"no\".");
-            string Answer = Console.ReadLine();
-            if (Answer == "no")
-            {
-                Console.WriteLine("It was nice to work with you! :)");
-                Console.ReadKey();
-            }
-            else if (Answer == "yes") userChoice.Choosing();
+            ContinuingC cont = new();
+            cont.ToContinue();
 
         }
     }

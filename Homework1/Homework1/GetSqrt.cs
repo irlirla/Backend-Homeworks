@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeWork1
+namespace SqrtOperation
 {
     public class Sqrt
     {
         public void GetSqrt()
         {
+            Console.WriteLine("Okay, let's get this root!");
+            Console.WriteLine("Please, enter a positive number for a sqrt operation.");
+            double sqrtNumber = -1;
             try
             {
-                Console.WriteLine("Please, enter a positive number for a sqrt operation.");
-                double sqrtNumber = -1;
                 do
                 {
                     double number = Convert.ToDouble(Console.ReadLine());
@@ -25,7 +26,9 @@ namespace HomeWork1
                     }
                     else
                     {
-                        Console.WriteLine("Can't make this operation! Please, enter a positive number.");
+                        Console.WriteLine("Can't make this operation! Please, enter a positive number.", 
+                            Console.ForegroundColor = ConsoleColor.DarkRed);
+                        Console.ResetColor();
                     }
                 }
                 while (sqrtNumber == -1);
@@ -33,11 +36,15 @@ namespace HomeWork1
             }
             catch (FormatException)
             {
-                Console.WriteLine("An Error Occured. Please restart and enter a number(!).");
+                Console.WriteLine("An Error Occured. Please restart and enter a number(!).",
+                    Console.ForegroundColor = ConsoleColor.DarkRed);
+                Console.ResetColor();
             }
             catch (OverflowException)
             {
-                Console.WriteLine($"Sorry, for now we're working only with numbers in range:\nfrom {double.MinValue} to {double.MaxValue}.\nPlease restart and try another number.");
+                Console.WriteLine($"Sorry, for now we're working only with numbers in range:\nfrom {double.MinValue} to {double.MaxValue}.\nPlease restart and try another number.",
+                    Console.ForegroundColor = ConsoleColor.DarkRed);
+                Console.ResetColor();
             }
         }
     }
