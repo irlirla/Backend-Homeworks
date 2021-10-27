@@ -54,7 +54,7 @@ namespace Choices
             else if (sign == "b")
             {
                 await IYandex.Show();
-                await IYandex.ReadAndDisplayFilesAsync();
+                //await IYandex.ReadAndDisplayFilesAsync();
             }
             else if (sign == "c")
             {

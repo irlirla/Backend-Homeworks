@@ -45,8 +45,12 @@ namespace SqrtOperation
                 Console.WriteLine(e.Message.ToString());
                 Console.ResetColor();
             }
+            finally
+            {
+                IContinuingC.ToContinue();
+            }
 
-            IContinuingC.ToContinue();
+            
         }
     }
 }
