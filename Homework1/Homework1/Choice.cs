@@ -44,7 +44,7 @@ namespace Choices
             Choice.Working(outSign);
         }
 
-        public static void Working(string sign)
+        public static async void Working(string sign)
         {
             sign = sign.ToLower();
             if (sign == "a")
@@ -53,7 +53,8 @@ namespace Choices
             }
             else if (sign == "b")
             {
-                IYandex.Show();
+                await IYandex.Show();
+                await IYandex.ReadAndDisplayFilesAsync();
             }
             else if (sign == "c")
             {

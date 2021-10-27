@@ -40,36 +40,50 @@ namespace HTMLShowing
 
 
 
-            
+
 
             //try
             //{
             //for (int i = 0; i < text1.Length; i++)
             //{
-            List<string> HTMLki = new List<string>();
+            //List<string> HTMLki = new List<string>();
 
-            using (StreamReader sr = new StreamReader(text1))
-            {
-                string line;
-                for (uint i = 0; i < text1.Length; i ++)
-                {
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        HTMLki.Add(line);
-                    }
-                }
-                        //while (((line = sr.ReadLine()) != null) && (respond != "stop")) ;
-            }
+            //using (StreamReader sr = new StreamReader(text1))
+            //{
+            //    string line;
+            //    for (uint i = 0; i < text1.Length; i ++)
+            //    {
+            //        while ((line = sr.ReadLine()) != null)
+            //        {
+            //            HTMLki.Add(line);
+            //        }
+            //    }
+            //            //while (((line = sr.ReadLine()) != null) && (respond != "stop")) ;
+            //}
 
-            string respond = null;
-            for (int i = 0; i<HTMLki.Capacity; i +=4)
-            {
-                Console.WriteLine(HTMLki[i] + "\n", HTMLki[i+1] + "\n",
-                                    HTMLki[i+2] + "\n", HTMLki[i+3] + "\n");
-                Console.WriteLine("Show the next part? To escape enter \"stop\".");
-                respond = Console.ReadLine();
-                if (respond == "stop") break;
-            }
+            //static async Task ReadAndDisplayFilesAsync()
+            //{
+            //    String filename = "Content1.txt";
+            //    Char[] buffer;
+
+            //    using (var sr = new StreamReader(filename))
+            //    {
+            //        buffer = new Char[(int)sr.BaseStream.Length];
+            //        await sr.ReadAsync(buffer, 0, (int)sr.BaseStream.Length);
+            //    }
+
+            //    Console.WriteLine(new String(buffer) + ">");
+            //}
+
+            //string respond = null;
+            //for (int i = 0; i<1000; i +=4)
+            //{
+            //    Console.WriteLine(buffer[i] + "\n", HTMLki[i+1] + "\n",
+            //                        HTMLki[i+2] + "\n", HTMLki[i+3] + "\n");
+            //    Console.WriteLine("Show the next part? To escape enter \"stop\".");
+            //    respond = Console.ReadLine();
+            //    if (respond == "stop") break;
+            //}
             //    }
             ////}
             //catch (Exception e)
@@ -81,6 +95,20 @@ namespace HTMLShowing
             //}
 
             client.Dispose();
+        }
+
+        static async Task ReadAndDisplayFilesAsync()
+        {
+            String filename = "Content1.txt";
+            Char[] buffer;
+
+            using (var sr = new StreamReader(filename))
+            {
+                buffer = new Char[(int)sr.BaseStream.Length];
+                await sr.ReadAsync(buffer, 0, (int)sr.BaseStream.Length);
+            }
+
+            Console.WriteLine(new String(buffer) + ">");
         }
     }
 }
