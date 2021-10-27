@@ -38,24 +38,38 @@ namespace HTMLShowing
                 }
             }
 
-            
 
-            //string respond = null;
+
+            
 
             //try
             //{
-                //for (int i = 0; i < text1.Length; i++)
-                //{
-                    using (StreamReader sr = new StreamReader(text1))
+            //for (int i = 0; i < text1.Length; i++)
+            //{
+            List<string> HTMLki = new List<string>();
+
+            using (StreamReader sr = new StreamReader(text1))
+            {
+                string line;
+                for (uint i = 0; i < text1.Length; i ++)
+                {
+                    while ((line = sr.ReadLine()) != null)
                     {
-                        string line;
-                        while ((line = sr.ReadLine()) != null)
-                        {
-                            Console.WriteLine(line + ">");
-                            //respond = Console.ReadLine();
-                        }
-                        //while (((line = sr.ReadLine()) != null) && (respond != "stop")) ;
+                        HTMLki.Add(line);
                     }
+                }
+                        //while (((line = sr.ReadLine()) != null) && (respond != "stop")) ;
+            }
+
+            string respond = null;
+            for (int i = 0; i<HTMLki.Capacity; i +=4)
+            {
+                Console.WriteLine(HTMLki[i] + "\n", HTMLki[i+1] + "\n",
+                                    HTMLki[i+2] + "\n", HTMLki[i+3] + "\n");
+                Console.WriteLine("Show the next part? To escape enter \"stop\".");
+                respond = Console.ReadLine();
+                if (respond == "stop") break;
+            }
             //    }
             ////}
             //catch (Exception e)
@@ -65,10 +79,6 @@ namespace HTMLShowing
             //    Console.WriteLine("Please try again later.");
             //    Console.ResetColor();
             //}
-
-
-
-            //Console.WriteLine(content);
 
             client.Dispose();
         }
