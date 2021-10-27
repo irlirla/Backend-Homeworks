@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using SqrtOperation;
 using Reading;
 using HTMLShowing;
-using Continuing;
 
 
 namespace Choices
@@ -44,7 +43,7 @@ namespace Choices
             Choice.Working(outSign);
         }
 
-        public static async void Working(string sign)
+        public static void Working(string sign)
         {
             sign = sign.ToLower();
             if (sign == "a")
@@ -53,7 +52,7 @@ namespace Choices
             }
             else if (sign == "b")
             {
-                await IYandex.Show();
+                IYandex.Show();
                 //await IYandex.ReadAndDisplayFilesAsync();
             }
             else if (sign == "c")
