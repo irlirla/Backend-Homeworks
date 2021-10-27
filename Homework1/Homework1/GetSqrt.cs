@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Continuing;
 
 namespace SqrtOperation
 {
-    public class Sqrt
+    interface ISqrt
     {
-        public void GetSqrt()
+        public static void GetSqrt()
         {
             Console.WriteLine("Okay, let's get this root!");
             Console.WriteLine("Please, enter a positive number for a sqrt operation.");
@@ -26,26 +23,30 @@ namespace SqrtOperation
                     }
                     else
                     {
-                        Console.WriteLine("Can't make this operation! Please, enter a positive number.", 
-                            Console.ForegroundColor = ConsoleColor.DarkRed);
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Can't make this operation! Please, enter a positive number.");
                         Console.ResetColor();
                     }
                 }
                 while (sqrtNumber == -1);
 
             }
-            catch (FormatException)
+            catch (FormatException e)
             {
-                Console.WriteLine("An Error Occured. Please restart and enter a number(!).",
-                    Console.ForegroundColor = ConsoleColor.DarkRed);
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("An Error Occured. Please restart and enter a number(!).");
+                Console.WriteLine(e.Message.ToString());
                 Console.ResetColor();
             }
-            catch (OverflowException)
+            catch (OverflowException e)
             {
-                Console.WriteLine($"Sorry, for now we're working only with numbers in range:\nfrom {double.MinValue} to {double.MaxValue}.\nPlease restart and try another number.",
-                    Console.ForegroundColor = ConsoleColor.DarkRed);
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine($"Sorry, for now we're working only with numbers in range:\nfrom {double.MinValue} to {double.MaxValue}.\nPlease restart and try another number.");
+                Console.WriteLine(e.Message.ToString());
                 Console.ResetColor();
             }
+
+            IContinuingC.ToContinue();
         }
     }
 }

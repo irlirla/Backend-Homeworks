@@ -1,11 +1,12 @@
 ﻿using System;
 using System.IO;
+using Continuing;
 
 namespace Reading
 {
-    class ReadingFile
+    interface IReadingFile
     {
-        public void ReadTheFile()
+        public static void ReadTheFile()
         {
             Console.WriteLine("Okay, let's read this file! Where is it located?");
             string address = Console.ReadLine();
@@ -23,10 +24,14 @@ namespace Reading
             }
             catch (Exception e)
             {
-                Console.WriteLine("The file could not be read:", Console.ForegroundColor = ConsoleColor.DarkRed);
-                Console.WriteLine(e.Message.ToString(), Console.ForegroundColor = ConsoleColor.DarkRed);
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("The file could not be read:");
+                Console.WriteLine(e.Message.ToString());
+                Console.WriteLine("Please try again later.");
                 Console.ResetColor();
             }
+
+            IContinuingC.ToContinue();
         }
     }
 }

@@ -3,32 +3,39 @@ using Choices;
 
 namespace Continuing
 {
-    public class ContinuingC
+    interface IContinuingC
     {
-        public void ToContinue()
+        public static void ToContinue()
         {
-            Choice userChoice = new();
-            Console.WriteLine("Let's do something more?\n Please, enter \"yes\" or \"no\".",
-               Console.ForegroundColor = ConsoleColor.DarkYellow);
-            Console.ResetColor();
-            string Answer = (Console.ReadLine()).ToLower();
+            //Console.ForegroundColor = ConsoleColor.DarkYellow;
+            //Console.WriteLine("Let's do something more?\n Please, enter \"yes\" or \"no\".");
+            //Console.ResetColor();
+            //string Answer = (Console.ReadLine()).ToLower();
+            string Answer;
             do
             {
-                if (Answer == "no")
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("Let's do something more?\n Please, enter \"yes\" or \"no\".");
+                Console.ResetColor();
+                Answer = (Console.ReadLine()).ToLower();
+                if (Answer == "no" || Answer == "n")
                 {
                     Console.WriteLine("It was nice to work with you! :)");
                     Console.ReadKey();
+                    break;
+                    //break;
                 }
-                else if (Answer == "yes") userChoice.Choosing();
+                else if (Answer == "yes" || Answer == "y") 
+                    Choice.Choosing();
                 else
                 {
-                    Console.WriteLine("Please, enter \"yes\" or \"no\" only.",
-                        Console.ForegroundColor = ConsoleColor.DarkRed);
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Please, enter \"yes\" or \"no\" only.");
                     Console.ResetColor();
                     Answer = (Console.ReadLine()).ToLower();
                 }
             }
-            while (Answer is "yes");
+            while (Answer == "yes");
         }
     }
 }

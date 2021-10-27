@@ -1,6 +1,5 @@
 ﻿using System;
 using Choices;
-using Continuing;
 
 namespace HomeWork1
 {
@@ -8,13 +7,13 @@ namespace HomeWork1
     {
         static void Main()
         {
-            Console.WriteLine("Hello there! What're we going to do?");
-            Choice userChoice = new();
-            userChoice.Choosing();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("Hello there! What're we gonna do?");
+            Console.ResetColor();
 
-            ContinuingC cont = new();
-            cont.ToContinue();
+            Choice.Choosing();
 
+            Console.ReadKey();
         }
     }
 }
