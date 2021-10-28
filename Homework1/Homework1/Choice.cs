@@ -53,7 +53,6 @@ namespace Choices
             else if (sign == "b")
             {
                 IYandex.Show();
-                //await IYandex.ReadAndDisplayFilesAsync();
             }
             else if (sign == "c")
             {

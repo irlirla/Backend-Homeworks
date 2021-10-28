@@ -41,7 +41,7 @@ namespace HTMLShowing
             string[] readText = File.ReadAllLines(text1);
             try
             {
-                for (int i = 0; i < 100000; i += 4)
+                for (int i = 0; i < readText.Length; i += 4)
                 {
                     Console.WriteLine(readText[i] + ">\n" + readText[i + 1] + ">\n" + readText[i + 2] + ">\n" + readText[i + 3] + ">\n");
                     Console.WriteLine("Show next block?");
