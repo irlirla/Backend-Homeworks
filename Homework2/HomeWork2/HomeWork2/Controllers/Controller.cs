@@ -4,36 +4,71 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace HomeWork2.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class FirstController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        List<Users> users = new List<Users>;
 
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
-        {
-            _logger = logger;
+        public FirstController()
+        { 
+            users.Add(new Users {Id = 1, Name = "Bilbo", Age = 35, Address = "Middle-earth"});
+            users.Add(new Users {Id = 2, Name = "Frodo", Age = 22, Address = "Mordor"});
+            users.Add(new Users {Id = 3, Name = "Samwise", Age = 27, Address = "Shire"});
+            users.Add(new Users {Id = 4, Name = "Peregrin", Age = 18, Address = "Shire"});
+            users.Add(new Users {Id = 5, Name = "Legolas", Age = 115, Address = "Gondor"});
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public List<Users> Get()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+            return users;
+        }
+
+        [HttpPost]
+        public void Post(Users info)
+        {
+            users.Add(info);
+        }
+
+        [HttpPost(File)]
+        public IActionResult Post([FromBody] FileDto model)
+        {
+            
+        }
+
+        [HttpDelete]
+        public void Delete(int id)
+        {}
+
+        [HttpPut]
+        {
+        }
+
+        [HttpPatch]
+        {
         }
     }
+
+ public class SecondController : ControllerBase
+    {
+        [HttpGet]
+        public IEnumerable<WeatherForecast> Get()
+        {
+            
+        }
+
+        [HttpPost]
+        {}
+
+        [HttpDelete]
+        {}
+
+        [HttpPut]
+        {
+        }
 }
