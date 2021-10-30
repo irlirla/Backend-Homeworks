@@ -14,6 +14,8 @@ namespace HomeWork2.Controllers
     {
         List<Users> users = new List<Users>;
 
+        var response =  (HttpWebResponse) request.GetResponse();
+
         public FirstController()
         { 
             users.Add(new Users {Id = 1, Name = "Bilbo", Age = 35, Address = "Middle-earth"});
@@ -27,48 +29,106 @@ namespace HomeWork2.Controllers
         public List<Users> Get()
         {
             return users;
+            if (response.StatusCode == HttpStatusCode.OK)
+                return "Update completed";
+            else
+                return "Error";
         }
 
         [HttpPost]
-        public void Post(Users info)
+        public string Post(Users info)
         {
             users.Add(info);
+
+            if (response.StatusCode == HttpStatusCode.Created)
+                return "Update completed";
+            else
+                return "Error";
         }
 
         [HttpPost(File)]
-        public IActionResult Post([FromBody] FileDto model)
+        public string Post([FromBody] FileDto model)
         {
             
         }
 
         [HttpDelete]
         public void Delete(int id)
-        {}
+        {
+            users.Remove(x => x.Id = id);
+             if (response.StatusCode == HttpStatusCode.NoContent)
+                return "Update completed";
+            else
+                return "Error";
+        }
 
         [HttpPut]
         {
+            
         }
 
         [HttpPatch]
+        public void PatchName(int id, string str)
         {
+             if (response.StatusCode == HttpStatusCode.OK)
+                return "Update completed";
+            else
+                return "Error";
         }
     }
 
  public class SecondController : ControllerBase
     {
+        string text1 = @"C:\Lanit\Homeworks\Homework1\Backend-Homeworks\Homework2\Book.txt";
+
+        var response =  (HttpWebResponse) request.GetResponse();
+
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public string GetText()
         {
-            
+            return string readText = File.ReadAllLines(text1);
+            if (response.StatusCode == HttpStatusCode.OK)
+                return "Update completed";
+            else
+                return "Error";
         }
 
         [HttpPost]
-        {}
+        public void AddText(string str) ////где задается этот стр
+        {
+            using (StreamWriter sw = new StreamWriter(text1, true))
+                    {
+                        sw.WriteLine(str + "\n");
+                    }
+             if (response.StatusCode == HttpStatusCode.Created)
+                return "Update completed";
+            else
+                return "Error";
+        }
 
         [HttpDelete]
-        {}
+        public void DeleteText()
+        {
+            using (StreamWriter sw = new StreamWriter(text1, false))
+                    {
+                        sw.WriteLine("");
+                    }
+             if (response.StatusCode == HttpStatusCode.NoContent)
+                return "Update completed";
+            else
+                return "Error";
+        }
 
         [HttpPut]
+        public void PutText(string str)
         {
+            using (StreamWriter sw = new StreamWriter(text1, false))
+                    {
+                        sw.WriteLine(str);
+                    }
+             if (response.StatusCode == HttpStatusCode.OK)
+                return "Update completed";
+            else
+                return "Error";
         }
 }
