@@ -14,9 +14,8 @@ namespace HomeWork2.Controllers
     {
         List<Users> users = new List<Users>();
 
-
-        public FirstController()
-        { 
+        public ListingController()
+        {
             users.Add(new Users {Id = 1, Name = "Bilbo", Age = 35, Address = "Middle-earth"});
             users.Add(new Users {Id = 2, Name = "Frodo", Age = 22, Address = "Mordor"});
             users.Add(new Users {Id = 3, Name = "Samwise", Age = 27, Address = "Shire"});

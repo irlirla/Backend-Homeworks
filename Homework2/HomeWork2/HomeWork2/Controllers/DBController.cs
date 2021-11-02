@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace HomeWork2.Controllers
 {
@@ -11,24 +12,24 @@ namespace HomeWork2.Controllers
     [ApiController]
     public class DBController : ControllerBase
     {
-        [HttpGet]
+        using (SqlConnection("server=localhost\SQLEXPRESS01; Database=master;Trusted_Connection=True;"))
         {
-        
-        }
+            sqlConnection.Open();
+            [HttpGet]
+            {
+            }
 
-        [HttpPost]
-        {
-        
-        }
+            [HttpPost]
+            {
+            }
 
-        [HttpPut]
-        {
+            [HttpPut]
+            {
+            }
 
-        }
-
-        [HttpDelete]
-        {
-
-        }
+            [HttpDelete]
+            {
+            }
+}
     }
 }
