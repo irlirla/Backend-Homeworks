@@ -15,9 +15,31 @@ namespace HomeWork2.Controllers
     {
         // GET: api/<ValuesController>
         [HttpGet]
+<<<<<<< Updated upstream:Homework2/HomeWork2/HomeWork2/Controllers/FileController.cs
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
+=======
+        public List<Users> GetAll()
+        {
+            return users;
+           /* if (response.StatusCode == HttpStatusCode.OK)
+                return "Update completed";
+            else
+                return "Error";
+           */
+        }
+
+        [HttpGet]
+        public List<Users> Get(int id)
+        {
+            return users.(x => x.Id = id);
+          /*  if (response.StatusCode == HttpStatusCode.OK)
+                return "Update completed";
+            else
+                return "Error";
+          */
+>>>>>>> Stashed changes:Homework2/HomeWork2/HomeWork2/Controllers/Controller.cs
         }
 
         // GET api/<ValuesController>/5
@@ -27,9 +49,21 @@ namespace HomeWork2.Controllers
             return "value";
         }
 
+<<<<<<< Updated upstream:Homework2/HomeWork2/HomeWork2/Controllers/FileController.cs
         // POST api/<ValuesController>
         [HttpPost]
         public void Post([FromBody] string value)
+=======
+        [HttpPost(File)]
+        public string Post([FromBody] FileDto model)
+>>>>>>> main
+        {
+            
+        }
+
+        [HttpDelete]
+        public string Delete(int id)
+>>>>>>> Stashed changes:Homework2/HomeWork2/HomeWork2/Controllers/Controller.cs
         {
         }
 
@@ -39,10 +73,23 @@ namespace HomeWork2.Controllers
         {
         }
 
+<<<<<<< Updated upstream:Homework2/HomeWork2/HomeWork2/Controllers/FileController.cs
         // DELETE api/<ValuesController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+=======
+        [HttpPatch]
+        public string PatchName(int id, string str)
+        {
+             str = "";
+             id = ;
+             users.(x => x.Id = id).Name = str;
+             if (response.StatusCode == HttpStatusCode.OK)
+                return "Update completed";
+            else
+                return "Error";
+>>>>>>> Stashed changes:Homework2/HomeWork2/HomeWork2/Controllers/Controller.cs
         }
     }
 
@@ -57,7 +104,7 @@ namespace HomeWork2.Controllers
         }
 
         [HttpPost]
-        public void AddText(string str) ////где задается этот стр
+        public string AddText(string str) ////где задается этот стр
         {
             using (StreamWriter sw = new StreamWriter(text1, true))
             {
@@ -66,7 +113,7 @@ namespace HomeWork2.Controllers
         }
 
         [HttpDelete]
-        public void DeleteText()
+        public string DeleteText()
         {
             using (StreamWriter sw = new StreamWriter(text1, false))
             {
@@ -75,7 +122,7 @@ namespace HomeWork2.Controllers
         }
 
         [HttpPut]
-        public void PutText(string str)
+        public string PutText(string str)
         {
             using (StreamWriter sw = new StreamWriter(text1, false))
             {
