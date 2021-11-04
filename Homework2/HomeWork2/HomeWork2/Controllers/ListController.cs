@@ -24,31 +24,27 @@ namespace HomeWork2.Controllers
         }
 
         [HttpGet]
-        public List<Users> Get()
+        public List<Users> ListGet()
         {
             return users;
         }
 
         [HttpPost]
-        public void Post(Users info)
+        public void ListPost([FromBody]Users info)
         {
             users.Add(info);
         }
 
-        [HttpPost(File)]
-        public void Post([FromBody] FileDto model)
-        {
-            
-        }
-
         [HttpDelete]
-        public void Delete(int id)
+        public void ListDelete(int id)
         {
             users.Remove(x => { x.Id = id});
         }
 
         [HttpPut]
+        public void ListPut(int id, [FromBody] Users info)
         {
-            
+            users.Remove(x => { x.ID = id}); 
+            users.Add(info);
         }
     }
